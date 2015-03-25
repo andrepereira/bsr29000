@@ -14,9 +14,6 @@
 
 
 
-//using namespace cv;
-//using namespace std;
-
 
 const bool isTraining  = true;
 const int nTrainings = 27;
@@ -106,7 +103,7 @@ void xor_test()
             // Run the network on the test data
             fann_type *calc_out = net.run(data.get_input()[i]);
 
-			std::cout << "XOR test (" << std::showpos << data.get_input()[i][0] << ", " 
+			std::cout << "NN test (" << std::showpos << data.get_input()[i][0] << ", " 
                  << data.get_input()[i][1] << ") -> " << *calc_out
                  << ", should be " << data.get_output()[i][0] << ", "
                  << "difference = " << std::noshowpos
@@ -123,7 +120,7 @@ void xor_test()
         unsigned int decimal_point = net.save_to_fixed("example_fixed.net");
         data.save_train_to_fixed("example_fixed.data", decimal_point);
 
-		std::cout << std::endl << "XOR test completed." << std::endl;
+		std::cout << std::endl << "NN test completed." << std::endl;
     }
 }
 
@@ -145,7 +142,7 @@ if(isTraining == true){
 cv::Mat frame;
 cv::Mat back;
 cv::Mat fore;
-cv::VideoCapture cap("car-overhead-3.avi");
+cv::VideoCapture cap("car-overhead-1.avi");
 cv::BackgroundSubtractorMOG2 bg;
 bg.nmixtures = 3;
 bg.bShadowDetection = false;
@@ -200,7 +197,7 @@ if(isTraining == true){
 	
 		countTrainings = countTrainings + 1;
 		if(countTrainings == (nTrainings)){
-			std::cout << "Amostra de treinamento obtida!" << std::endl;
+			std::cout << "Data training received!" << std::endl;
 			myfile << std::endl;
 			myfile.close();
 			
@@ -216,7 +213,7 @@ if(isTraining == true){
     } 
     
     
-			std::cout << "Total de objetos detectados: " << contours.size() << std::endl;
+			std::cout << "Total of detected targets: " << contours.size() << std::endl;
 			exit(0);
 	
 		}
@@ -246,7 +243,7 @@ iLastY = posY;
 			myfile.close();
 	}
 	
-		std::cout << "Total de objetos detectados: " << contours.size() << std::endl;
+		std::cout << "Total of detected targets: " << contours.size() << std::endl;
 		exit(0);
 	}
 }
