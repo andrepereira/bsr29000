@@ -85,7 +85,7 @@ void xor_test()
 	std::cout << std::endl << "Training network." << std::endl;
 
     FANN::training_data data;
-    if (data.read_train_from_file("example.txt"))
+    if (data.read_train_from_file("data.data"))
     {
         // Initialize and train the network with the data
         net.init_weights(data);
@@ -116,9 +116,9 @@ void xor_test()
 		std::cout << std::endl << "Saving network." << std::endl;
 
         // Save the network in floating point and fixed point
-        net.save("example_float.net");
-        unsigned int decimal_point = net.save_to_fixed("example_fixed.net");
-        data.save_train_to_fixed("example_fixed.data", decimal_point);
+        net.save("data_float.net");
+        unsigned int decimal_point = net.save_to_fixed("data_fixed.net");
+        data.save_train_to_fixed("data_fixed.data", decimal_point);
 
 		std::cout << std::endl << "NN test completed." << std::endl;
     }
@@ -134,7 +134,7 @@ int iLastX = -1;
 int iLastY = -1;	
 
 if(isTraining == true){
-  myfile.open ("example.txt");
+  myfile.open ("data.data");
   
   myfile << nTrainings << " " << nImputs << " " << nOutputs << std::endl;
 }
