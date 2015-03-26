@@ -37,7 +37,7 @@ int print_callback(FANN::neural_net &net, FANN::training_data &train,
 }
 
 // Test function of NN in the fann C++ wrapper
-void xor_test()
+void movement_test()
 {
 	std::cout << std::endl << "Survailance NN test started." << std::endl;
 
@@ -205,7 +205,7 @@ if(isTraining == true){
 				 try
     {
         std::ios::sync_with_stdio(); // Syncronize cout and printf output
-        xor_test();
+        movement_test();
     }
     catch (...)
     {
